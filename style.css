@@ -17,6 +17,74 @@ body {
     height: 100vh;
 }
 
+/* Device Detection Banner */
+.device-banner {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #ffff00 0%, #ffdd00 100%);
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.close-banner {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-banner:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+}
+
+/* Device Stats */
+.device-stats {
+    margin-top: 30px;
+    padding: 15px;
+    background: rgba(255, 255, 0, 0.1);
+    border: 2px solid #ffaa00;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.device-stats p {
+    line-height: 1.6;
+    font-size: 13px;
+}
+
 /* Screen Management */
 .screen {
     display: none;
@@ -417,8 +485,19 @@ body {
     background: #ffff33;
 }
 
-/* Responsive Design */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
+    .device-banner {
+        top: auto;
+        bottom: 10px;
+        right: auto;
+        left: 10px;
+        width: calc(100% - 20px);
+        font-size: 12px;
+        padding: 10px 15px;
+        max-width: none;
+    }
+
     .minecraft-title h1 {
         font-size: 48px;
     }
@@ -437,6 +516,8 @@ body {
     
     .btn {
         width: 100%;
+        padding: 12px 30px;
+        font-size: 16px;
     }
     
     .world-item {
@@ -446,5 +527,56 @@ body {
     
     .world-item-details {
         margin-top: 10px;
+    }
+
+    .device-stats {
+        margin-top: 20px;
+        padding: 10px;
+        border: 2px solid #ffaa00;
+    }
+
+    .device-stats p {
+        font-size: 12px;
+    }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .device-banner {
+        font-size: 12px;
+        padding: 10px 15px;
+        max-width: 250px;
+    }
+
+    .minecraft-title h1 {
+        font-size: 60px;
+    }
+
+    .worlds-container {
+        width: 95%;
+        height: 95vh;
+        padding: 20px;
+    }
+
+    .world-editor-container {
+        width: 95%;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+    .device-banner {
+        font-size: 14px;
+        padding: 14px 22px;
+        max-width: 350px;
+    }
+
+    .minecraft-title h1 {
+        font-size: 80px;
+    }
+
+    .texture-preview {
+        width: 350px;
+        height: 250px;
     }
 }
