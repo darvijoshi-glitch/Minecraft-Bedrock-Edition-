@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Bedrock Edition Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app"></div>
+    
+    <!-- Home Screen -->
+    <div id="homeScreen" class="screen active">
+        <div class="home-container">
+            <div class="minecraft-title">
+                <h1>MINECRAFT</h1>
+                <p class="subtitle">Bedrock Edition</p>
+            </div>
+            
+            <div class="home-content">
+                <div class="texture-preview" style="background-image: url('https://raw.githubusercontent.com/PixlEmly/BedrockPacks/main/Vanilla_Tweaks/Textures/Resource_Pack_Base_HD/textures/blocks/grass_block_top.png');">
+                </div>
+                
+                <div class="menu-buttons">
+                    <button class="btn btn-primary" onclick="showWorldsScreen()">Play</button>
+                    <button class="btn btn-secondary" onclick="showSettings()">Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Worlds Screen -->
+    <div id="worldsScreen" class="screen">
+        <div class="worlds-container">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showHomeScreen()">← Back</button>
+                <h2>Your Worlds</h2>
+            </div>
+            
+            <div class="worlds-list" id="worldsList"></div>
+            
+            <div class="world-actions">
+                <button class="btn btn-primary" onclick="createNewWorld()">Create New World</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- World Editor Screen -->
+    <div id="worldEditorScreen" class="screen">
+        <div class="world-editor-container">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showWorldsScreen()">← Back</button>
+                <h2 id="worldTitle">World Editor</h2>
+            </div>
+            
+            <div class="editor-content">
+                <div class="world-preview" id="worldPreview"></div>
+                
+                <div class="world-info">
+                    <label>World Name:
+                        <input type="text" id="worldNameInput" placeholder="Enter world name">
+                    </label>
+                    
+                    <label>Game Mode:
+                        <select id="gameModeSelect">
+                            <option value="survival">Survival</option>
+                            <option value="creative">Creative</option>
+                            <option value="adventure">Adventure</option>
+                        </select>
+                    </label>
+                    
+                    <label>Difficulty:
+                        <select id="difficultySelect">
+                            <option value="peaceful">Peaceful</option>
+                            <option value="easy">Easy</option>
+                            <option value="normal">Normal</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="editor-actions">
+                <button class="btn btn-primary" onclick="saveWorld()">Save World</button>
+                <button class="btn btn-danger" onclick="deleteWorld()">Delete World</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="world.js"></script>
+    <script src="homeScreen.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
