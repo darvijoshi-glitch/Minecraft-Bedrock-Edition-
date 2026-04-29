@@ -1,0 +1,450 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.screen.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Home Screen */
+#homeScreen {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+}
+
+.home-container {
+    text-align: center;
+    max-width: 600px;
+}
+
+.minecraft-title h1 {
+    font-size: 72px;
+    font-weight: bold;
+    color: #ffff00;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8),
+                 6px 6px 0px rgba(0, 0, 0, 0.5);
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+.minecraft-title .subtitle {
+    font-size: 28px;
+    color: #ffff00;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8),
+                     6px 6px 0px rgba(0, 0, 0, 0.5),
+                     0px 0px 20px rgba(255, 255, 0, 0.3);
+    }
+    50% {
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8),
+                     6px 6px 0px rgba(0, 0, 0, 0.5),
+                     0px 0px 40px rgba(255, 255, 0, 0.6);
+    }
+}
+
+.home-content {
+    margin-top: 40px;
+}
+
+.texture-preview {
+    width: 300px;
+    height: 200px;
+    margin: 30px auto;
+    border: 4px solid #ffff00;
+    background-size: repeat;
+    background-position: center;
+    box-shadow: 0 0 30px rgba(255, 255, 0, 0.4),
+                inset 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: textureGlow 2s ease-in-out infinite;
+}
+
+@keyframes textureGlow {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0.4),
+                    inset 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(255, 255, 0, 0.7),
+                    inset 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.menu-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ffff00 0%, #cccc00 100%);
+    color: #000;
+    box-shadow: 0 4px 0 #999900,
+                0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ffff33 0%, #dddd00 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #999900,
+                0 8px 15px rgba(255, 255, 0, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #999900,
+                0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #666666 0%, #444444 100%);
+    color: #ffff00;
+    box-shadow: 0 4px 0 #222222,
+                0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #777777 0%, #555555 100%);
+    color: #ffff33;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #222222,
+                0 8px 15px rgba(255, 255, 0, 0.2);
+}
+
+.btn-secondary:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #222222,
+                0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+    color: #ffff00;
+    box-shadow: 0 4px 0 #990000,
+                0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #ff6666 0%, #dd1111 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #990000,
+                0 8px 15px rgba(255, 68, 68, 0.4);
+}
+
+.btn-danger:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #990000,
+                0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Worlds Screen */
+#worldsScreen {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.worlds-container {
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid #ffff00;
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 40px rgba(255, 255, 0, 0.3);
+}
+
+.screen-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ffff00;
+    padding-bottom: 20px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #ffff00;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    color: #ffff33;
+    transform: scale(1.2);
+}
+
+.screen-header h2 {
+    font-size: 32px;
+    color: #ffff00;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+    flex: 1;
+}
+
+.worlds-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.world-item {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #ffff00;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.world-item:hover {
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
+    transform: translateX(5px);
+}
+
+.world-item-info {
+    flex: 1;
+}
+
+.world-item-name {
+    font-size: 20px;
+    color: #ffff00;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.world-item-details {
+    font-size: 12px;
+    color: #999999;
+}
+
+.world-item-details span {
+    margin-right: 20px;
+}
+
+.world-item-details .gamemode {
+    color: #ffaa00;
+    font-weight: bold;
+}
+
+.world-item-details .difficulty {
+    color: #ff6666;
+    font-weight: bold;
+}
+
+.world-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.world-actions .btn {
+    flex: 1;
+    max-width: 200px;
+}
+
+/* World Editor Screen */
+#worldEditorScreen {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.world-editor-container {
+    width: 90%;
+    max-width: 900px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid #ffff00;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(255, 255, 0, 0.3);
+}
+
+.editor-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+    min-height: 300px;
+}
+
+.world-preview {
+    background: linear-gradient(135deg, #3a5a7a 0%, #2a4a6a 100%);
+    border: 3px solid #ffff00;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #aaaaaa;
+    background-image: 
+        url('https://raw.githubusercontent.com/PixlEmly/BedrockPacks/main/Vanilla_Tweaks/Textures/Resource_Pack_Base_HD/textures/blocks/grass_block_top.png'),
+        url('https://raw.githubusercontent.com/PixlEmly/BedrockPacks/main/Vanilla_Tweaks/Textures/Resource_Pack_Base_HD/textures/blocks/dirt.png');
+    background-size: 64px 64px, 64px 64px;
+    background-position: 0 0, 32px 32px;
+    background-repeat: repeat;
+}
+
+.world-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.world-info label {
+    display: flex;
+    flex-direction: column;
+    color: #ffff00;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.world-info input,
+.world-info select {
+    margin-top: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ffff00;
+    color: #ffff00;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.world-info input:focus,
+.world-info select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.4);
+}
+
+.world-info input::placeholder {
+    color: rgba(255, 255, 0, 0.5);
+}
+
+.world-info select option {
+    background: #1a1a1a;
+    color: #ffff00;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.editor-actions .btn {
+    flex: 1;
+    max-width: 250px;
+}
+
+/* Scrollbar Styling */
+.worlds-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.worlds-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.worlds-list::-webkit-scrollbar-thumb {
+    background: #ffff00;
+    border-radius: 10px;
+}
+
+.worlds-list::-webkit-scrollbar-thumb:hover {
+    background: #ffff33;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .minecraft-title h1 {
+        font-size: 48px;
+    }
+    
+    .minecraft-title .subtitle {
+        font-size: 20px;
+    }
+    
+    .editor-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .world-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .world-item-details {
+        margin-top: 10px;
+    }
+}
